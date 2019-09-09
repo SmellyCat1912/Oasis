@@ -14,6 +14,7 @@ namespace Oasis.Models
 
         [Required]
         [StringLength(10)]
+        [Display(Name = "Name")]
         public string name { get; set; }
 
         [Required]

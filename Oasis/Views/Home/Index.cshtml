@@ -1,18 +1,28 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@Scripts.Render("~/bundles/jquery")
 
-<div class="jumbotron">
+<script>
+    $(document).ready(function{
+        $(".btn btn-primary btn-lg").mouseenter(function{
+            alert("OK!")
+        });
+    });
+
+</script>
+
+<div class="jumbotron ">
     <h1>Welcome to Oasis</h1>
     <p class="lead">OASIS is an online film ticket booking application which aims to provide user great convenience to search, purchase and manage theatre and tickets with great pleasure. </p>
-    <img src="~/Images/face.jpg" alt="Sample Photo" style="height:400px; width:600px; margin-top:1.5em;"/>
+    <img src="~/Images/face.jpg" alt="Sample Photo" style="height:400px; width:600px; margin-top:1.5em;" />
     <p><a href="https://asp.net" class="btn btn-primary btn-lg" style="margin-top:1.5em;">What's On &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
 
-       <a class="btn btn-default" href="/home/About">Find theaters</a>
+        <a class="btn btn-default" href="/home/About">Find theaters</a>
 
     </div>
     <div class="col-md-4">

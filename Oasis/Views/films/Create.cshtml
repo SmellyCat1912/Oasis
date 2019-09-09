@@ -6,12 +6,19 @@
 }
 
 <h2>Create</h2>
+<Script>
+    $(function () {
+        $('#1').datepicker({
+            format: 'mm-dd-yyyy'
+        });
+    });
 
+</Script>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>film</h4>
         <hr />
@@ -80,10 +87,19 @@
     </div>
 }
 
+<form>
+    First name:<br>
+    <input id="one" type="text" name="firstname"><br>
+    Last name:<br>
+    <input type="text" name="lastname">
+</form>
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
+    @Scripts.Render("~/Scripts/bootstrap.js")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/bootstrap-datepicker.js")
 }
