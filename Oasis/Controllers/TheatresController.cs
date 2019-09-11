@@ -10,6 +10,7 @@ using Oasis.Models;
 
 namespace Oasis.Controllers
 {
+    [Authorize]
     public class TheatresController : Controller
     {
         private Model1 db = new Model1();
