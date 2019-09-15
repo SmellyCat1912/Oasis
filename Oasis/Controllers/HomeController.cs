@@ -12,12 +12,14 @@ namespace Oasis.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "user")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
+        [Authorize(Roles = "user")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
