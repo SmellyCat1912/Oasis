@@ -13,11 +13,11 @@ namespace Oasis.utils
         // Please use your API KEY here.
         private const String API_KEY = "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";
 
-        public void Send(String subject, String contents)
+        public void Send(String toEmail, String subject, String contents)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("noreply@localhost.com", "FIT5032 Example Email User");
-            var to = new EmailAddress("nche0024@student.monash.edu", "");
+            var from = new EmailAddress("noreply@localhost.com", "Oasis User");
+            var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);

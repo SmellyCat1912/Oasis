@@ -11,11 +11,11 @@ namespace Oasis.Models
   
     public class SendEmailModel
     {
-
-        [Display(Name = "Email address")]
-        [Required(ErrorMessage = "Please enter an email address.")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string ToEmail { get; set; }
+//
+ //       [Display(Name = "Email address")]
+   //     [Required(ErrorMessage = "Please enter an email address.")]
+     //   [EmailAddress(ErrorMessage = "Invalid Email Address")]
+       // public string ToEmail { get; set; }
 
         [Required(ErrorMessage = "Please enter a subject.")]
         public string Subject { get; set; }

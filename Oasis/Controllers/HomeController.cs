@@ -41,12 +41,12 @@ namespace Oasis.Controllers
             {
                 try
                 {
-                    String toEmail = model.ToEmail;
+                    String toEmail = "nche0024@student.monash.edu";
                     String subject = model.Subject;
                     String contents = model.Contents;
 
                     EmailSender es = new EmailSender();
-                    es.Send(subject, contents);
+                    es.Send(toEmail, subject, contents);
 
                     ViewBag.Result = "Email has been send.";
 
