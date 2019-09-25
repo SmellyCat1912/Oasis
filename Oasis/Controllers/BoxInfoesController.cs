@@ -22,6 +22,8 @@ namespace Oasis.Controllers
 
         // GET: BoxInfoes/Details/5
         public ActionResult Details(decimal id)
+
+           
         {
             if (id == null)
             {
