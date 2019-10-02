@@ -29,8 +29,7 @@ namespace Oasis.Models
 
         public int price { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string theatre_id { get; set; }
+        [Column(TypeName = "numeric")]
+        public decimal theatre_id { get; set; }
     }
 }

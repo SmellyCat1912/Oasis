@@ -61,19 +61,24 @@ namespace Oasis.Controllers
         }
 
         // GET: BoxInfoes/Edit/5
-        public ActionResult Edit(decimal id)
+
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BoxInfo boxInfo = db.BoxInfoes.Find(id);
-            if (boxInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(boxInfo);
+            return View();
         }
+        //public ActionResult Edit(decimal id)
+       //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+         //   }
+         //   BoxInfo boxInfo = db.BoxInfoes.Find(id);
+         //   if (boxInfo == null)
+         //   {
+        //        return HttpNotFound();
+        //    }
+         //   return View(boxInfo);
+        //}
 
         // POST: BoxInfoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

@@ -22,6 +22,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.name)
         </th>
         <th>
@@ -35,34 +38,39 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
+<tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.desc)
-            </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.name)
+    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.location)
-            </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.desc)
+    </td>
 
-            @if (User.IsInRole("admin"))
-            {
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            }
+    <td>
+        @Html.DisplayFor(modelItem => item.location)
+    </td>
 
-        </tr>
+    @if (User.IsInRole("admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    }
+
+</tr>
     }
 
 </table>
 
 <div id='map' style='width: 800px; height: 300px;'></div>
+
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoidmluY2VudDE5MTIiLCJhIjoiY2swdGdiejByMDVpdDNjbDg1NnBuemlmcSJ9.rJxeB75zwD7o7fM0QPL-Og';
     var map = new mapboxgl.Map({
@@ -71,17 +79,17 @@
         center: [144.9631, -37.8136],
         zoom:13
     });
-
+  
     map.addControl(new mapboxgl.NavigationControl());
 
-    map.on('load', function () {
-        map.addLayer({
-            "id": "places",
+              map.on('load', function () {
+                  map.addLayer({
+                      "id": "places",
             "type": "symbol",
             "source": {
-                "type": "geojson",
+                          "type": "geojson",
                 "data": {
-                    "type": "FeatureCollection",
+                              "type": "FeatureCollection",
                     "features": [{
                         "type": "Feature",
                         "properties": {
@@ -91,7 +99,7 @@
                         "geometry": {
                             "type": "Point",
                             "coordinates": [144.9631, -37.8136]
-                        }
+  }
                     }]
                 }
             },
@@ -100,33 +108,33 @@
                 "icon-allow-overlap": true
             }
         });
-
+  
         map.on('click', 'places', function (e) {
-            var coordinates = e.features[0].geometry.coordinates.slice();
-            var description = e.features[0].properties.description;
+      var coordinates = e.features[0].geometry.coordinates.slice();
+      var description = e.features[0].properties.description;
 
-            // Ensure that if the map is zoomed out such that multiple
-            // copies of the feature are visible, the popup appears
-            // over the copy being pointed to.
+      // Ensure that if the map is zoomed out such that multiple
+      // copies of the feature are visible, the popup appears
+      // over the copy being pointed to.
 
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
 
-            new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-        });
+      new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(description)
+          .addTo(map);
+  });
 
         // Change the cursor to a pointer when the mouse is over the places layer.
         map.on('mouseenter', 'places', function () {
-            map.getCanvas().style.cursor = 'pointer';
-        });
+      map.getCanvas().style.cursor = 'pointer';
+  });
 
         // Change it back to a pointer when it leaves.
         map.on('mouseleave', 'places', function () {
-            map.getCanvas().style.cursor = '';
-        });
+      map.getCanvas().style.cursor = '';
+  });
     });
 </script>
